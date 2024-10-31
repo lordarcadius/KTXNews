@@ -18,10 +18,13 @@ import com.vipuljha.ktxnews.viewmodels.NewsViewModelProviderFactory
 class NewsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNewsBinding
-     lateinit var viewModel: NewsViewModel
+    lateinit var viewModel: NewsViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        val repository = NewsRepository(ArticleDB(this))
+        val viewModelProviderFactory = NewsViewModelProviderFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
         binding = ActivityNewsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -29,9 +32,6 @@ class NewsActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val repository = NewsRepository(ArticleDB(this))
-        val viewModelProviderFactory = NewsViewModelProviderFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
         binding.bottomNavigationView.setupWithNavController(findNavController(R.id.newsNavHostFragment))
     }
 }

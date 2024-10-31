@@ -23,9 +23,9 @@ class RetrofitProvider {
                 .client(client)
                 .build()
         }
-    }
 
-    val api: NewsApi by lazy {
-        retrofit.create(NewsApi::class.java)
+        val api: NewsApi by lazy {
+            retrofit.create(NewsApi::class.java)
+        }
     }
 }
