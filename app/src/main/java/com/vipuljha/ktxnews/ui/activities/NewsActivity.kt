@@ -1,4 +1,4 @@
-package com.vipuljha.ktxnews.ui
+package com.vipuljha.ktxnews.ui.activities
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
