@@ -5,14 +5,20 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.vipuljha.ktxnews.R
+import com.vipuljha.ktxnews.data.local.ArticleDB
+import com.vipuljha.ktxnews.data.repository.NewsRepository
 import com.vipuljha.ktxnews.databinding.ActivityNewsBinding
+import com.vipuljha.ktxnews.viewmodels.NewsViewModel
+import com.vipuljha.ktxnews.viewmodels.NewsViewModelProviderFactory
 
 class NewsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNewsBinding
+     lateinit var viewModel: NewsViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -23,6 +29,9 @@ class NewsActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val repository = NewsRepository(ArticleDB(this))
+        val viewModelProviderFactory = NewsViewModelProviderFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
         binding.bottomNavigationView.setupWithNavController(findNavController(R.id.newsNavHostFragment))
     }
 }
