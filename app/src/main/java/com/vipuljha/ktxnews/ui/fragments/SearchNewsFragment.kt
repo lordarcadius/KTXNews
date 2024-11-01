@@ -28,7 +28,7 @@ import kotlinx.coroutines.launch
 class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
     lateinit var binding: FragmentSearchNewsBinding
     lateinit var viewModel: NewsViewModel
-    lateinit var newsAdapter: NewsAdapter
+    private lateinit var newsAdapter: NewsAdapter
     var isLoading = false
     var isLastPage = false
     var isScrolling = false
@@ -115,7 +115,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
         isLoading = true
     }
 
-    val scrollListener = object : RecyclerView.OnScrollListener() {
+    private val scrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
             val layoutManager = recyclerView.layoutManager as LinearLayoutManager

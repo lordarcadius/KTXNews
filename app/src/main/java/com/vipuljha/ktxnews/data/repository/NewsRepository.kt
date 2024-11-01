@@ -4,7 +4,7 @@ import com.vipuljha.ktxnews.data.local.ArticleDB
 import com.vipuljha.ktxnews.data.remote.RetrofitProvider
 import com.vipuljha.ktxnews.models.Article
 
-class NewsRepository(val db: ArticleDB) {
+class NewsRepository(private val db: ArticleDB) {
     suspend fun getBreakingNew(countryCode: String, pageNumber: Int) =
         RetrofitProvider.api.getBreakingNews(countryCode, pageNumber)
 

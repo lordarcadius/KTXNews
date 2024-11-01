@@ -22,32 +22,33 @@ import kotlinx.coroutines.launch
 import okio.IOException
 import retrofit2.Response
 
+@Suppress("DEPRECATION")
 class NewsViewModel(
     app: Application,
-    val repository: NewsRepository
+    private val repository: NewsRepository
 ) : AndroidViewModel(app) {
 
     val breakingNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var breakingNewsPage = 1
-    var breakingNewsResponse: NewsResponse? = null
+    private var breakingNewsResponse: NewsResponse? = null
 
     val searchNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var searchNewsPage = 1
-    var searchNewsResponse: NewsResponse? = null
+    private var searchNewsResponse: NewsResponse? = null
 
     init {
         getBreakingNews("us")
     }
 
-    fun getBreakingNews(countrycode: String) = viewModelScope.launch {
-        safeBreakingNewsCall(countrycode)
+    fun getBreakingNews(countryCode: String) = viewModelScope.launch {
+        safeBreakingNewsCall(countryCode)
     }
 
-    private suspend fun safeBreakingNewsCall(countrycode: String) {
+    private suspend fun safeBreakingNewsCall(countryCode: String) {
         breakingNews.postValue(Resource.Loading())
         try {
             if (hasInternet()) {
-                val response = repository.getBreakingNew(countrycode, breakingNewsPage)
+                val response = repository.getBreakingNew(countryCode, breakingNewsPage)
                 breakingNews.postValue(handleBreakingNewsResponse(response))
             } else {
                 breakingNews.postValue(Resource.Error("No internet connection!"))

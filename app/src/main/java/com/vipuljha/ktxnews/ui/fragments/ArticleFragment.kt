@@ -15,9 +15,9 @@ import com.vipuljha.ktxnews.ui.activities.NewsActivity
 import com.vipuljha.ktxnews.viewmodels.NewsViewModel
 
 class ArticleFragment : Fragment(R.layout.fragment_article) {
-    lateinit var binding: FragmentArticleBinding
-    lateinit var viewModel: NewsViewModel
-    val args: ArticleFragmentArgs by navArgs()
+    private lateinit var binding: FragmentArticleBinding
+    private lateinit var viewModel: NewsViewModel
+    private val args: ArticleFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -19,7 +19,7 @@ import com.vipuljha.ktxnews.viewmodels.NewsViewModel
 
 class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
 
-    lateinit var binding: FragmentSavedNewsBinding
+    private lateinit var binding: FragmentSavedNewsBinding
     lateinit var viewModel: NewsViewModel
     lateinit var newsAdapter: NewsAdapter
 

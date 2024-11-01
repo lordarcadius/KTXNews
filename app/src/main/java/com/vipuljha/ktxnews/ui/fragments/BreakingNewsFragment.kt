@@ -22,7 +22,7 @@ import com.vipuljha.ktxnews.viewmodels.NewsViewModel
 class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     private lateinit var binding: FragmentBreakingNewsBinding
     lateinit var viewModel: NewsViewModel
-    lateinit var newsAdapter: NewsAdapter
+    private lateinit var newsAdapter: NewsAdapter
     var isLoading = false
     var isLastPage = false
     var isScrolling = false
@@ -96,7 +96,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         isLoading = true
     }
 
-    val scrollListener = object : RecyclerView.OnScrollListener() {
+    private val scrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
             val layoutManager = recyclerView.layoutManager as LinearLayoutManager
