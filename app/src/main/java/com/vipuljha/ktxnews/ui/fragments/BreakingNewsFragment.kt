@@ -1,17 +1,16 @@
 package com.vipuljha.ktxnews.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AbsListView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.vipuljha.ktxnews.R
 import com.vipuljha.ktxnews.databinding.FragmentBreakingNewsBinding
 import com.vipuljha.ktxnews.ui.activities.NewsActivity
@@ -24,7 +23,6 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     private lateinit var binding: FragmentBreakingNewsBinding
     lateinit var viewModel: NewsViewModel
     lateinit var newsAdapter: NewsAdapter
-    private val TAG = "BreakingNewsFragment"
     var isLoading = false
     var isLastPage = false
     var isScrolling = false
@@ -70,7 +68,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 is Resource.Error -> {
                     hideProgressBar()
                     response.message?.let {
-                        Log.e(TAG, "An error occured: $it")
+                        Toast.makeText(activity, "An error has occurred: $it", Toast.LENGTH_SHORT).show()
                     }
                 }
 

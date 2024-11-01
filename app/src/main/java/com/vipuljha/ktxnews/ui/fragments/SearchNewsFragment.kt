@@ -1,11 +1,11 @@
 package com.vipuljha.ktxnews.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AbsListView
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -29,7 +29,6 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
     lateinit var binding: FragmentSearchNewsBinding
     lateinit var viewModel: NewsViewModel
     lateinit var newsAdapter: NewsAdapter
-    private val TAG = "SearchNewsFragment"
     var isLoading = false
     var isLastPage = false
     var isScrolling = false
@@ -87,7 +86,8 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                 is Resource.Error -> {
                     hideProgressBar()
                     response.message?.let {
-                        Log.e(TAG, "An error occured: $it")
+                        Toast.makeText(activity, "An error has occurred: $it", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
 

@@ -23,7 +23,7 @@ class NewsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         val repository = NewsRepository(ArticleDB(this))
-        val viewModelProviderFactory = NewsViewModelProviderFactory(repository)
+        val viewModelProviderFactory = NewsViewModelProviderFactory(application, repository)
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
         binding = ActivityNewsBinding.inflate(layoutInflater)
         setContentView(binding.root)
