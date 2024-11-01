@@ -43,7 +43,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
                 .into(ivArticleImage)
 
             tvTitle.text = article.title
-            tvSource.text = article.source.name
+            tvSource.text = article.source?.name
             tvDescription.text = article.description
             tvPublishedAt.text = article.publishedAt
 
