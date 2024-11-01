@@ -75,7 +75,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                 is Resource.Success -> {
                     hideProgressBar()
                     response.data?.let {
-                        newsAdapter.differ.submitList(it.articles.toList())
+                        newsAdapter.differ.submitList(it.articles)
                         val totalPages = it.totalResults / QUERY_PAGE_SIZE + 2
                         isLastPage = viewModel.searchNewsPage == totalPages
                         if (isLastPage) {

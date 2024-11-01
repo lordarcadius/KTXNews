@@ -40,14 +40,15 @@ class NewsViewModel(val repository: NewsRepository) : ViewModel() {
     private fun handleBreakingNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
-                breakingNewsPage ++
-                if (breakingNewsResponse == null){
+                if (breakingNewsResponse == null) {
                     breakingNewsResponse = resultResponse
                 } else {
-                    val oldArticles = breakingNewsResponse?.articles
+                    val oldArticles = breakingNewsResponse!!.articles
                     val newArticles = resultResponse.articles
-                    oldArticles?.addAll(newArticles)
+                    oldArticles.addAll(newArticles)
+                    breakingNewsResponse = breakingNewsResponse?.copy(articles = oldArticles)
                 }
+                breakingNewsPage++
                 return Resource.Success(breakingNewsResponse ?: resultResponse)
             }
         }
@@ -58,14 +59,15 @@ class NewsViewModel(val repository: NewsRepository) : ViewModel() {
     private fun handleSearchNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
-                searchNewsPage ++
-                if (searchNewsResponse == null){
+                if (searchNewsResponse == null) {
                     searchNewsResponse = resultResponse
                 } else {
-                    val oldArticles = searchNewsResponse?.articles
+                    val oldArticles = searchNewsResponse!!.articles
                     val newArticles = resultResponse.articles
-                    oldArticles?.addAll(newArticles)
+                    oldArticles.addAll(newArticles)
+                    searchNewsResponse = searchNewsResponse?.copy(articles = oldArticles)
                 }
+                searchNewsPage++
                 return Resource.Success(searchNewsResponse ?: resultResponse)
             }
         }
