@@ -2,10 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/news_nav_graph"
-    app:startDestination="@id/breakingNewsFragment">
+    app:startDestination="@id/breakingNews">
 
     <fragment
-        android:id="@+id/breakingNewsFragment"
+        android:id="@+id/breakingNews"
         android:name="com.vipuljha.ktxnews.ui.fragments.BreakingNewsFragment"
         android:label="BreakingNewsFragment">
         <action
@@ -17,7 +17,7 @@
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
-        android:id="@+id/savedNewsFragment"
+        android:id="@+id/savedNews"
         android:name="com.vipuljha.ktxnews.ui.fragments.SavedNewsFragment"
         android:label="SavedNewsFragment">
         <action
@@ -29,7 +29,7 @@
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
-        android:id="@+id/searchNewsFragment"
+        android:id="@+id/searchNews"
         android:name="com.vipuljha.ktxnews.ui.fragments.SearchNewsFragment"
         android:label="SearchNewsFragment">
         <action
