@@ -3,4 +3,9 @@
     <string name="breaking_news">Breaking News</string>
     <string name="saved_news">Saved News</string>
     <string name="search_news">Search News</string>
+    <string name="article_meta_image">Article meta image</string>
+    <string name="title">Title</string>
+    <string name="dot_separator">•</string>
+    <string name="source">Source</string>
+    <string name="published_by">Published By</string>
 </resources>
